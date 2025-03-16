@@ -2,7 +2,7 @@ import openai
 import requests
 import datetime
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
 import certifi
 
@@ -10,7 +10,7 @@ import certifi
 #os.environ["SSL_CERT_FILE"] = "/opt/homebrew/etc/ca-certificates/cert.pem"
 
 # Load environment variables
-load_dotenv()
+#load_dotenv()
 
 # Set your API keys
 COINGECKO_API_KEY = os.getenv("COINGECKO_API_KEY")

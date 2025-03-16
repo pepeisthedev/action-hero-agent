@@ -2,24 +2,19 @@ import openai
 import requests
 import datetime
 import os
-from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI  # Updated import
 from langchain.prompts import PromptTemplate
 import os
 import httpx
 
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
 # Setup LangChain LLM Model correctly
 llm = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=1.2,
-    top_p=0.9,
+    model_kwargs={"top_p": 0.9},
     max_tokens=None,
     timeout=None,
     max_retries=2,
-    api_key=OPENAI_API_KEY,
     http_client=httpx.Client(verify=False)
 )
 

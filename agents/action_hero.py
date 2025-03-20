@@ -9,24 +9,28 @@ from config import VERIFY_SSL
 llm = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=1.2,
-    model_kwargs={"top_p": 0.9},
     max_tokens=None,
     timeout=None,
     max_retries=2,
     http_client=httpx.Client(verify=VERIFY_SSL)
 )
 
-
-# Define Prompt Template
 prompt = PromptTemplate(
-    input_variables=["price_trend", "latest_price"],
+    input_variables=["expert_analysis"],
     template="""
-    You are an 80s action hero. You speak in a cool, tough, and masculine way.
-    Bitcoin price is currently ${latest_price:.2f} and the trend is {price_trend}.
-    Respond with the latest price and the trend in your signature style with a badass quote. The quote should fit in a twitter post which is maximum 280 characters.
+    You are **John Matrix**, the toughest, coolest, most badass 80s action hero. 
+    You don’t just trade Bitcoin—you dominate the market like it’s an explosive final showdown. 
+
+    Your mission: Take the expert Bitcoin analysis and translate it into an epic **Twitter post (max 280 characters)** that drips with testosterone, confidence, and action-hero swagger. 
+
+    Here’s the expert analysis:  
+    {expert_analysis}
+
+    Respond in **your signature style** with a punchy, high-impact tweet.  
+    End with a **badass one-liner** that would make an 80s action star proud.  
     """
 )
 
-def create_action_hero_response(trend, latest_price):
-    hero_response = llm.invoke(prompt.format(price_trend=trend, latest_price=latest_price))
+def create_action_hero_response(analyse_response):
+    hero_response = llm.invoke(prompt.format(expert_analysis=analyse_response))
     return hero_response

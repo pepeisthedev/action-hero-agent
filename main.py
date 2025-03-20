@@ -10,6 +10,7 @@ if __name__ == "__main__":
       analyse_response = analyze_bitcoin_data(prices)
     #  print(response)
       response = create_action_hero_response(analyse_response.content)
+    #  print(response.content)
       post_tweet(response.content)
 
     except Exception as e:

@@ -7,3 +7,4 @@ python-dotenv
 pip_system_certs
 langchain
 langchain-core
+requests_oauthlib

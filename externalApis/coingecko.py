@@ -1,16 +1,7 @@
 import openai
 import requests
-import datetime
 import os
-#from dotenv import load_dotenv
-import os
-import certifi
-
-#os.environ["REQUESTS_CA_BUNDLE"] = "/opt/homebrew/etc/ca-certificates/cert.pem"
-#os.environ["SSL_CERT_FILE"] = "/opt/homebrew/etc/ca-certificates/cert.pem"
-
-# Load environment variables
-#load_dotenv()
+from config import VERIFY_SSL
 
 # Set your API keys
 COINGECKO_API_KEY = os.getenv("COINGECKO_API_KEY")
@@ -29,7 +20,7 @@ def fetch_bitcoin_prices_24h():
         "x-cg-api-key": COINGECKO_API_KEY
     }
 
-    response = requests.get(COINGECKO_URL, headers=headers, params=params)  # Disable SSL verification
+    response = requests.get(COINGECKO_URL, headers=headers, params=params, verify=VERIFY_SSL)
     response.raise_for_status()  # Raise error if request fails
 
     data = response.json()

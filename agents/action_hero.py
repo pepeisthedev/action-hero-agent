@@ -1,11 +1,9 @@
 import openai
 import requests
-import datetime
-import os
 from langchain_openai import ChatOpenAI  # Updated import
 from langchain.prompts import PromptTemplate
-import os
 import httpx
+from config import VERIFY_SSL
 
 # Setup LangChain LLM Model correctly
 llm = ChatOpenAI(
@@ -15,7 +13,7 @@ llm = ChatOpenAI(
     max_tokens=None,
     timeout=None,
     max_retries=2,
-    http_client=httpx.Client(verify=False)
+    http_client=httpx.Client(verify=VERIFY_SSL)
 )
 
 

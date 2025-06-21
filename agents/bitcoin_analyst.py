@@ -1,12 +1,12 @@
 import openai
 import requests
-from langchain_openai import ChatOpenAI  # Updated import
+from langchain_openai import AzureChatOpenAI  # Updated import
 from langchain.prompts import PromptTemplate
 import httpx
 from config import VERIFY_SSL
 
 # Setup LangChain LLM Model correctly
-llm = ChatOpenAI(
+llm = AzureChatOpenAI(
     model="gpt-4o-mini",
     temperature=1.2,
     max_tokens=None,
